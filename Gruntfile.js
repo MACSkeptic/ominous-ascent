@@ -29,6 +29,7 @@ module.exports = function (grunt) {
         nomen: true,
         jquery: true,
         globals: {
+          'Kinetic': true,
           '$': true,
           'console': true,
           'equal': true,

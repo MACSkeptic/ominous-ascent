@@ -4,8 +4,6 @@ define(function (require) {
   QUnit.testStart(function () { support.globalStubs.requestAnimationFrame(); });
   QUnit.testDone(function () { support.globalStubs.restore(); });
 
-  require('./infrastructure/qunit_test');
-
   require('./engine/game_loop_test');
   require('./engine/engine_test');
 

@@ -11,5 +11,7 @@ define(function (require) {
 
   require('./renderer/canvas_test');
 
+  require('./game/update_test');
+
   QUnit.start();
 });

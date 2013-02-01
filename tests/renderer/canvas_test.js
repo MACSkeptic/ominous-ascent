@@ -22,9 +22,9 @@ define(function (require) {
 
     var spies = Kinetic.Stage.lastCall.returnValue;
     var layers = { background: 'background', foreground: 'foreground' };
-    var engine = { currentScene: { layers: layers } };
+    var state = { currentScene: { layers: layers } };
 
-    canvas.callbacks.draw(engine); // draw with brand new foreground and background (resets layers)
+    canvas.callbacks.draw(state); // draw with brand new foreground and background (resets layers)
 
     equal(spies.removeChildren.callCount, 1);
     equal(spies.draw.callCount, 1);
@@ -32,14 +32,14 @@ define(function (require) {
     ok(spies.add.calledWith('background'));
     equal(spies.add.lastCall.args[0], 'foreground');
 
-    canvas.callbacks.draw(engine); // draw with same foreground and background (does NOT reset layers)
+    canvas.callbacks.draw(state); // draw with same foreground and background (does NOT reset layers)
 
     equal(spies.removeChildren.callCount, 1);
     equal(spies.draw.callCount, 2);
     equal(spies.add.callCount, 2);
 
     layers.background = 'new background';
-    canvas.callbacks.draw(engine); // draw with a new background (resets layers)
+    canvas.callbacks.draw(state); // draw with a new background (resets layers)
 
     equal(spies.removeChildren.callCount, 2);
     equal(spies.draw.callCount, 3);
@@ -48,7 +48,7 @@ define(function (require) {
     equal(spies.add.lastCall.args[0], 'foreground');
 
     layers.foreground = 'new foreground';
-    canvas.callbacks.draw(engine); // draw with a new foreground (resets layers)
+    canvas.callbacks.draw(state); // draw with a new foreground (resets layers)
 
     equal(spies.removeChildren.callCount, 3);
     equal(spies.draw.callCount, 4);

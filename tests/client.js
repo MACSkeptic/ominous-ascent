@@ -7,5 +7,7 @@ define(function (require) {
   require('./engine/game_loop_test');
   require('./engine/engine_test');
 
+  require('./scene/splash_screen_test');
+
   QUnit.start();
 });

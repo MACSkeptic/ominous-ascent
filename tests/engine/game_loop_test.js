@@ -3,6 +3,15 @@ define(function (require) {
 
   module('game loop');
 
+  test('init', function () {
+    var callback = sinon.spy();
+
+    gameLoop.init('firstScene');
+    gameLoop.start({ game: callback });
+
+    ok(callback.lastCall.args[0].currentScene, 'firstScene');
+  });
+
   test('calls the game callback', function () {
     var callback = sinon.spy();
 

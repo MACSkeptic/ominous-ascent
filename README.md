@@ -34,11 +34,12 @@ grunt
 
 ### on the browser
 
-`node main` then visit `localhost:3000/tests/client.html`
+`node main` then visit `localhost:3000/tests`
 
 ## wanna help?
 
 * leave a comment telling why our code is bad (or good)
+* check our [board](https://trello.com/board/ominous-ascent/510af37643d6d9a04e002b4f)
 * submit a [pull request](https://github.com/MACSkeptic/ominous-ascent/pulls)
 
 ## premises

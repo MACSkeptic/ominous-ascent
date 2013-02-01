@@ -1,3 +1,15 @@
 @import 'reset';
 
 body, * { font: 14px Sans-Serif; position: relative; }
+
+#forkme {
+  position: absolute; top: 0; right: 0; z-index: 9001;
+
+  img { 
+    position: relative; 
+    z-index: 9002;
+    opacity: 0.2;
+
+    &:hover { opacity: 1 };
+  }
+}

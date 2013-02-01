@@ -1,4 +1,4 @@
-# ominous climb
+# ominous ascent
 
 [![Build Status](https://travis-ci.org/MACSkeptic/ominous-ascent.png?branch=master)](https://travis-ci.org/MACSkeptic/ominous-ascent)
 

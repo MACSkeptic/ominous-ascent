@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    qunit: { all: { options: { urls: ['http://localhost:19999/tests/client.html'] } } },
+    qunit: { all: { options: { urls: ['http://localhost:19999/tests/all.html'] } } },
     connect: { server: { options: { port: 19999, base: '.' } } },
     jshint: {
       all: [

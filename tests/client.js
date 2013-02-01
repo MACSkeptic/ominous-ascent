@@ -9,5 +9,7 @@ define(function (require) {
 
   require('./scene/splash_screen_test');
 
+  require('./renderer/canvas_test');
+
   QUnit.start();
 });

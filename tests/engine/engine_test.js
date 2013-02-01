@@ -2,7 +2,7 @@ define(function (require) {
   var engine = require('../../lib/engine'),
       support = require('../../lib/support');
 
-  module('engine', { 
+  module('engine', {
     setup: support.globalStubs.$,
     teardown: support.globalStubs.restore
   });

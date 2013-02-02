@@ -49,18 +49,32 @@ define(function (require) {
     deepEqual(state.sprites, sprites);
   });
 
-  test('click here to start', function () {
+  test('press enter to start', function () {
     var state = { changeSceneTo: sinon.stub() };
     var instance = splashScreen(state);
 
-    equal(instance.layers.foreground.get('#click-here-to-start').length, 0);
+    equal(instance.layers.foreground.get('#press-enter-to-start').length, 0);
     asset.imageLoader.lastCall.args[0].complete([]);
-    equal(instance.layers.foreground.get('#click-here-to-start').length, 1);
+    equal(instance.layers.foreground.get('#press-enter-to-start').length, 1);
 
-    var clickHereToStart = instance.layers.foreground.get('#click-here-to-start')[0];
+    var clickHereToStart = instance.layers.foreground.get('#press-enter-to-start')[0];
     equal(clickHereToStart.getY(), 355);
     equal(clickHereToStart.getX(), instance.width / 2 - clickHereToStart.getWidth() / 2);
-    equal(clickHereToStart.getText(), 'click here to start');
+    equal(clickHereToStart.getText(), 'press enter to start');
+  });
+
+  test('no input handler', function () {
+    ok(!splashScreen({}).handleInput);
+  });
+
+  test('input handler when loaded', function () {
+    var state = { changeSceneTo: sinon.spy() };
+    var instance = splashScreen(state);
+    asset.imageLoader.lastCall.args[0].complete([]);
+    ok(instance.handleInput);
+    instance.handleInput({}, { keyPressed: sinon.stub().withArgs('enter').returns(true) });
+    equal(state.changeSceneTo.callCount, 1);
+    equal(state.changeSceneTo.lastCall.args[0].layers.foreground.get('.player').length, 1);
   });
 
   test('loading bar background', function () {

@@ -8,10 +8,16 @@ define(function (require) {
   function runTests() {
     module('first screen');
 
-    test('has 6 targets', function () {
+    test('6 targets', function () {
       firstScreen.update(state);
       firstScreen.update(state);
       equal(firstScreen.layers.foreground.get('.target').length, 6);
+    });
+
+    test('1 player', function () {
+      firstScreen.update(state);
+      firstScreen.update(state);
+      equal(firstScreen.layers.foreground.get('.player').length, 1);
     });
   }
 });

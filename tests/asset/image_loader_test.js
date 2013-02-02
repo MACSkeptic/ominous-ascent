@@ -17,8 +17,11 @@ define(function (require) {
       imagesToLoad: imagesToLoad
     };
 
-    imageLoader.init(specs);
-    imageLoader.start();
+    var instance = imageLoader(specs);
+
+    equal(imageWrapper.callCount, 0);
+
+    instance.start();
 
     equal(imageWrapper.callCount, 4);
 

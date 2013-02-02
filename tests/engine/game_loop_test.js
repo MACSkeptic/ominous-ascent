@@ -1,13 +1,13 @@
 define(function (require) {
   var gameLoop = require('../../lib/engine/game_loop');
+  var firstScene = function () { return 'firstScene'; };
 
   module('game loop');
 
   test('init', function () {
     var callback = sinon.spy();
 
-    gameLoop.init('firstScene');
-    gameLoop.start({ game: callback });
+    gameLoop(firstScene).start({ game: callback });
 
     ok(callback.lastCall.args[0].currentScene, 'firstScene');
   });
@@ -15,7 +15,7 @@ define(function (require) {
   test('calls the game callback', function () {
     var callback = sinon.spy();
 
-    gameLoop.start({ game: callback });
+    gameLoop(firstScene).start({ game: callback });
 
     ok(callback.called);
     equal(callback.callCount, 1);
@@ -29,7 +29,7 @@ define(function (require) {
   test('calls the update callback', function () {
     var callback = sinon.spy();
 
-    gameLoop.start({ update: callback });
+    gameLoop(firstScene).start({ update: callback });
 
     ok(callback.called);
     equal(callback.callCount, 1);
@@ -43,7 +43,7 @@ define(function (require) {
   test('calls the draw callback', function () {
     var callback = sinon.spy();
 
-    gameLoop.start({ draw: callback });
+    gameLoop(firstScene).start({ draw: callback });
 
     ok(callback.called);
     equal(callback.callCount, 1);

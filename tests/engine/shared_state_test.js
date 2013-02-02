@@ -1,10 +1,15 @@
 define(function (require) {
-  var sharedState = require('../../lib/engine/shared_state');
+  var sharedState;
+  var defaultFirstScene = function () { return 'default first scene'; };
 
-  module('shared state');
+  function setup() {
+    sharedState = require('../../lib/engine/shared_state')(defaultFirstScene);
+  }
+
+  module('shared state', { setup: setup });
 
   test('default current scene', function () {
-    equal(sharedState.currentScene, undefined);
+    equal(sharedState.currentScene, 'default first scene');
   });
 
   test('change current scene', function () {

@@ -1,11 +1,8 @@
 define(function (require) {
-  var engine = require('./lib/engine'),
-      game = require('./lib/game'),
-      renderer = require('./lib/renderer'),
-      firstScene = require('./lib/scene/splash_screen');
+  var firstScene = require('./lib/scene/splash_screen');
+  var game = require('./lib/game')();
+  var canvas = require('./lib/renderer').canvas(window.innerWidth, window.innerHeight);
+  var engine = require('./lib/engine')(firstScene);
 
-  renderer.canvas.init(window.innerWidth, window.innerHeight);
-  engine.init(firstScene);
-  
-  engine.start(game.callbacks, renderer.canvas.callbacks);
+  engine.start(game.callbacks, canvas.callbacks);
 });

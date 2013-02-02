@@ -9,15 +9,13 @@ define(function (require) {
     module('first screen');
 
     test('6 targets', function () {
-      firstScreen.update(state);
-      firstScreen.update(state);
-      equal(firstScreen.layers.foreground.get('.target').length, 6);
+      var instance = firstScreen(state);
+      equal(instance.layers.foreground.get('.target').length, 6);
     });
 
     test('1 player', function () {
-      firstScreen.update(state);
-      firstScreen.update(state);
-      equal(firstScreen.layers.foreground.get('.player').length, 1);
+      var instance = firstScreen(state);
+      equal(instance.layers.foreground.get('.player').length, 1);
     });
   }
 });

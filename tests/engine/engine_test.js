@@ -1,6 +1,7 @@
 define(function (require) {
-  var engine = require('../../lib/engine'),
-      support = require('../../lib/support');
+  var engine = require('../../lib/engine');
+  var support = require('../../lib/support');
+  var firstScene = function () { return 'firstScene'; };
 
   module('engine', {
     setup: support.globalStubs.$,
@@ -10,7 +11,7 @@ define(function (require) {
   test('var args callbacks only on dom ready', function () {
     var draw = sinon.spy(), update = sinon.spy(), game = sinon.spy();
 
-    engine.start({ draw: draw }, { update: update }, { game: game });
+    engine(firstScene).start({ draw: draw }, { update: update }, { game: game });
 
     ok($.called);
 
@@ -26,11 +27,9 @@ define(function (require) {
   });
 
   test('init', function () {
-    engine.init('firstScene');
-
     var callback = sinon.spy();
 
-    engine.start({ game: callback });
+    engine(firstScene).start({ game: callback });
 
     $.lastCall.args[0]();
 

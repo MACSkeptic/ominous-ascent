@@ -28,6 +28,7 @@ module.exports = function (grunt) {
         jquery: true,
         globals: {
           'Kinetic': true,
+          'KeyboardJS': true,
           '$': true,
           'console': true,
           'deepEqual': true,

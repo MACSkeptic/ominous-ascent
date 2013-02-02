@@ -9,6 +9,7 @@ define(function (require) {
   require('./renderer/canvas_test');
 
   require('./game/update_test');
+  require('./game/input_test');
 
   require('./asset/image_loader_test');
 });

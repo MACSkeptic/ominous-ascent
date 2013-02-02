@@ -41,13 +41,13 @@ define(function (require) {
     splashScreen.update({});
     deepEqual(
       imageLoader.init.lastCall.args[0].imagesToLoad,
-      ['/media/sprites/target.gif', '/media/sprites/demon.png']
+      ['/media/sprites/target.png', '/media/sprites/demon.png']
     );
   });
 
   test('store sprites on the state', function () {
     var state = {};
-    var sprites = ['/media/sprites/target.gif', '/media/sprites/demon.png'];
+    var sprites = ['/media/sprites/target.png', '/media/sprites/demon.png'];
 
     splashScreen.update(state);
     imageLoader.init.lastCall.args[0].complete(sprites);

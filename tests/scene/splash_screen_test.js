@@ -56,7 +56,8 @@ define(function (require) {
   });
 
   test('click here to start', function () {
-    splashScreen.update({});
+    var state = { changeSceneTo: sinon.stub() };
+    splashScreen.update(state);
 
     equal(splashScreen.layers.foreground.get('#click-here-to-start').length, 0);
     imageLoader.init.lastCall.args[0].complete([]);
@@ -66,6 +67,9 @@ define(function (require) {
     equal(clickHereToStart.getY(), 355);
     equal(clickHereToStart.getX(), splashScreen.width / 2 - clickHereToStart.getWidth() / 2);
     equal(clickHereToStart.getText(), 'click here to start');
+
+    clickHereToStart.fire('click');
+    equal(state.changeSceneTo.callCount, 1);
   });
 
   test('loading bar background', function () {

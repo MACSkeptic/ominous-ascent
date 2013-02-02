@@ -4,6 +4,7 @@ define(function (require) {
   require('./engine/shared_state_test');
 
   require('./scene/splash_screen_test');
+  require('./scene/first_screen_test');
 
   require('./renderer/canvas_test');
 

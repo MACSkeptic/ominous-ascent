@@ -5,6 +5,8 @@ define(function (require) {
   module('splash screen', {
     setup: function () {
       splashScreen.initialised = false;
+      var clickHereToStart = splashScreen.layers.foreground.get('#click-here-to-start')[0];
+      if (clickHereToStart) { clickHereToStart.remove(); }
       sinon.spy(imageLoader, 'init');
       sinon.stub(imageLoader, 'start');
     },
@@ -51,6 +53,19 @@ define(function (require) {
     imageLoader.init.lastCall.args[0].complete(sprites);
 
     deepEqual(state.sprites, sprites);
+  });
+
+  test('click here to start', function () {
+    splashScreen.update({});
+
+    equal(splashScreen.layers.foreground.get('#click-here-to-start').length, 0);
+    imageLoader.init.lastCall.args[0].complete([]);
+    equal(splashScreen.layers.foreground.get('#click-here-to-start').length, 1);
+
+    var clickHereToStart = splashScreen.layers.foreground.get('#click-here-to-start')[0];
+    equal(clickHereToStart.getY(), 355);
+    equal(clickHereToStart.getX(), splashScreen.width / 2 - clickHereToStart.getWidth() / 2);
+    equal(clickHereToStart.getText(), 'click here to start');
   });
 
   test('loading bar background', function () {

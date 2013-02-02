@@ -7,9 +7,7 @@ module.exports = function (grunt) {
       all: [
         'lib/**/*.js',
         'tests/**/*.js',
-        'app.js',
-        'public/**/*.js',
-        'Gruntfile.js'
+        '*.js'
       ],
       options: {
         indent: 2,
@@ -32,6 +30,7 @@ module.exports = function (grunt) {
           'Kinetic': true,
           '$': true,
           'console': true,
+          'deepEqual': true,
           'equal': true,
           'ok': true,
           'expect': true,
@@ -43,7 +42,8 @@ module.exports = function (grunt) {
           'define': true,
           'Line': true,
           '$V': true,
-          '_': true
+          '_': true,
+          '__dirname': true
         },
         undef: true
       }

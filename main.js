@@ -1,6 +1,9 @@
-var requirejs = require('requirejs');
 
-var app = requirejs('./lib/server');
+(function () {
+  var requirejs = require('requirejs');
+  var app = requirejs('./lib/server');
 
-app.configure(__dirname);
-app.start();
+  /*jshint nomen:false*/
+  app.configure(__dirname);
+  app.start();
+})();

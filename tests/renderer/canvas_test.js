@@ -13,6 +13,7 @@ define(function (require) {
     var body = {};
     var foreground = jQuery('<canvas id="foreground">');
     var background = jQuery('<canvas id="background">');
+    var buffer = jQuery('<canvas id="buffer">');
     var windowStub = { on: on };
 
     body.append = function (element) {
@@ -23,10 +24,12 @@ define(function (require) {
     $.withArgs('body').returns(body);
     $.withArgs('<canvas id="background">').returns(background);
     $.withArgs('<canvas id="foreground">').returns(foreground);
+    $.withArgs('<canvas id="buffer">').returns(buffer);
     $.withArgs(window).returns(windowStub);
 
     canvas(1, 2);
 
+    equal(append.callCount, 2);
     equal(append.firstCall.args[0], background[0]);
     equal(append.lastCall.args[0], foreground[0]);
 

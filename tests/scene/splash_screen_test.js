@@ -62,7 +62,7 @@ define(function (require) {
     equal(get(instance.entities, 'press-enter-to-start').length, 1);
 
     var pressEnterToStart = get(instance.entities, 'press-enter-to-start')[0];
-    equal(pressEnterToStart.y, 390);
+    equal(pressEnterToStart.y, 345);
     equal(pressEnterToStart.x, instance.width / 2);
     equal(pressEnterToStart.text, 'press enter to start');
   });
@@ -84,7 +84,7 @@ define(function (require) {
   test('loading bar background', function () {
     var bar = get(splashScreen({}).entities, 'loading-bar-background')[0];
     equal(bar.width, 900);
-    equal(bar.x, 50);
+    equal(bar.x, 500);
     equal(bar.height, 100);
     equal(bar.y, 350);
   });
@@ -93,7 +93,7 @@ define(function (require) {
     var bar = get(splashScreen({}).entities, 'loading-bar-foreground')[0];
 
     equal(bar.width, 0);
-    equal(bar.x, 50);
+    equal(bar.x, 500);
     equal(bar.height, 100);
     equal(bar.y, 350);
 

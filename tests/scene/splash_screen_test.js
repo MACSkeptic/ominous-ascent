@@ -13,11 +13,15 @@ define(function (require) {
     }
   });
 
+  function get(entities, type) {
+    return _(entities).filter(function (entity) { return entity.type === type; });
+  }
+
   test('title', function () {
-    var title = splashScreen({}).layers.foreground.get('Text')[0];
-    equal(title.getY(), 100);
-    equal(title.getX(), splashScreen().width / 2 - title.getWidth() / 2);
-    equal(title.getText(), 'ominous ascent');
+    var title = get(splashScreen({}).entities, 'title')[0];
+    equal(title.y, 150);
+    equal(title.x, splashScreen({}).width / 2);
+    equal(title.text, 'ominous ascent');
   });
 
   test('dimensions', function () {
@@ -53,14 +57,14 @@ define(function (require) {
     var state = { changeSceneTo: sinon.stub() };
     var instance = splashScreen(state);
 
-    equal(instance.layers.foreground.get('#press-enter-to-start').length, 0);
+    equal(get(instance.entities, 'press-enter-to-start').length, 0);
     asset.imageLoader.lastCall.args[0].complete([]);
-    equal(instance.layers.foreground.get('#press-enter-to-start').length, 1);
+    equal(get(instance.entities, 'press-enter-to-start').length, 1);
 
-    var clickHereToStart = instance.layers.foreground.get('#press-enter-to-start')[0];
-    equal(clickHereToStart.getY(), 355);
-    equal(clickHereToStart.getX(), instance.width / 2 - clickHereToStart.getWidth() / 2);
-    equal(clickHereToStart.getText(), 'press enter to start');
+    var pressEnterToStart = get(instance.entities, 'press-enter-to-start')[0];
+    equal(pressEnterToStart.y, 390);
+    equal(pressEnterToStart.x, instance.width / 2);
+    equal(pressEnterToStart.text, 'press enter to start');
   });
 
   test('no input handler', function () {
@@ -74,32 +78,32 @@ define(function (require) {
     ok(instance.handleInput);
     instance.handleInput({}, { keyPressed: sinon.stub().withArgs('enter').returns(true) });
     equal(state.changeSceneTo.callCount, 1);
-    equal(state.changeSceneTo.lastCall.args[0].layers.foreground.get('.player').length, 1);
+    equal(get(state.changeSceneTo.lastCall.args[0].entities, 'player').length, 1);
   });
 
   test('loading bar background', function () {
-    var bar = splashScreen({}).layers.foreground.get('#loading-bar-background')[0];
-    equal(bar.getWidth(), 900);
-    equal(bar.getX(), 50);
-    equal(bar.getHeight(), 100);
-    equal(bar.getY(), 350);
+    var bar = get(splashScreen({}).entities, 'loading-bar-background')[0];
+    equal(bar.width, 900);
+    equal(bar.x, 50);
+    equal(bar.height, 100);
+    equal(bar.y, 350);
   });
 
   test('loading bar foreground', function () {
-    var bar = splashScreen({}).layers.foreground.get('#loading-bar-foreground')[0];
+    var bar = get(splashScreen({}).entities, 'loading-bar-foreground')[0];
 
-    equal(bar.getWidth(), 0);
-    equal(bar.getX(), 50);
-    equal(bar.getHeight(), 100);
-    equal(bar.getY(), 350);
+    equal(bar.width, 0);
+    equal(bar.x, 50);
+    equal(bar.height, 100);
+    equal(bar.y, 350);
 
     asset.imageLoader.lastCall.args[0].progress(0.1);
-    equal(bar.getWidth(), 900 * 0.1);
+    equal(bar.width, 900 * 0.1);
 
     asset.imageLoader.lastCall.args[0].progress(0.9);
-    equal(bar.getWidth(), 900 * 0.9);
+    equal(bar.width, 900 * 0.9);
 
     asset.imageLoader.lastCall.args[0].progress(1);
-    equal(bar.getWidth(), 900 * 1);
+    equal(bar.width, 900 * 1);
   });
 });

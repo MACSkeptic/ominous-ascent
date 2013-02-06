@@ -20,7 +20,6 @@ define(function (require) {
       return body;
     };
 
-
     $.withArgs('body').returns(body);
     $.withArgs('<canvas id="background">').returns(background);
     $.withArgs('<canvas id="foreground">').returns(foreground);

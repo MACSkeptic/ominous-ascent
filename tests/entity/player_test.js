@@ -15,6 +15,7 @@ define(function (require) {
     module('player', { setup: setup });
 
     test('speed', function () {
+      expect(0);
     });
   }
 });

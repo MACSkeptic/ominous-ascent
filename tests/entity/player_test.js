@@ -1,7 +1,7 @@
 define(function (require) {
   var player = require('../../lib/entity').player;
 
-  var sprites: [new Image()];
+  var sprites = [new Image()];
   sprites[0].onload = runTests;
   sprites[0].src = '/media/sprites/demon.png';
 

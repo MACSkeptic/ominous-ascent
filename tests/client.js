@@ -12,4 +12,6 @@ define(function (require) {
   require('./game/input_test');
 
   require('./asset/image_loader_test');
+
+  require('./entity/player_test');
 });

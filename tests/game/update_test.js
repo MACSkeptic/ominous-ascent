@@ -1,5 +1,5 @@
 define(function (require) {
-  var update = require('../../lib/game/update');
+  var update = require('../../lib/game/update')();
 
   module('update');
 

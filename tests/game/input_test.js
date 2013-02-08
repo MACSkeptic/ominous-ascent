@@ -1,5 +1,5 @@
 define(function (require) {
-  var input = require('../../lib/game/input');
+  var input = require('../../lib/game/input')();
   var support = require('../../lib/support');
 
   module('input', {

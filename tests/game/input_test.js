@@ -34,14 +34,23 @@ define(function (require) {
   test('mouse is clicked', function () {
     ok(!input.clicked({}));
     mousedown();
+    ok(!input.clicked({}));
+    mouseup();
+    ok(!input.clicked({}));
+    input.update();
+    ok(input.clicked({}));
+    mousedown();
+    input.update();
     ok(input.clicked({}));
     mouseup();
+    input.update();
     ok(!input.clicked({}));
   });
 
   test('scales the click', function () {
     mousedown();
     mousemove({ clientX: 100, clientY: 50 });
+    input.update();
     QUnit.close(input.clicked({ width: 40, height: 25 }).x, 100 * 40 / window.innerWidth, 0.01);
     QUnit.close(input.clicked({ width: 40, height: 25 }).y, 50 * 25 / window.innerHeight, 0.01);
   });

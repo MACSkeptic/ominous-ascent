@@ -1,7 +1,11 @@
 define(function (require) {
-  var update = require('../../lib/game/update')();
+  var updateHandler = require('../../lib/game/update');
+  var stubbedInput = { clicked: sinon.spy(), update: sinon.spy() };
+  var update;
 
-  module('update');
+  function setup() { update = updateHandler(stubbedInput); }
+
+  module('update', { setup: setup });
 
   test('updates current scene', function () {
     var callback = sinon.spy();
@@ -15,6 +19,12 @@ define(function (require) {
     var state = { currentScene: { handleInput: callback } };
     update(state);
     ok(callback.calledWith(state));
+  });
+
+  test('update input', function () {
+    var state = { currentScene: { } };
+    update(state);
+    ok(stubbedInput.update.calledWith(state));
   });
 
   test('does not break if the current scene not have an update/handleInput callback', function () {

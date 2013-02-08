@@ -76,7 +76,10 @@ define(function (require) {
     var instance = splashScreen(state);
     asset.imageLoader.lastCall.args[0].complete([]);
     ok(instance.handleInput);
-    instance.handleInput({}, { keyPressed: sinon.stub().withArgs('enter').returns(true) });
+    instance.handleInput({}, {
+      keyPressed: sinon.stub().withArgs('enter').returns(true),
+      clicked: sinon.stub()
+    });
     equal(state.changeSceneTo.callCount, 1);
     equal(get(state.changeSceneTo.lastCall.args[0].entities, 'player').length, 1);
   });

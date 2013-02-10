@@ -14,6 +14,27 @@ define(function (require) {
     ok(callback.calledWith(state));
   });
 
+  test('auto updates all entities on current scene', function () {
+    var callback = sinon.spy();
+    var state = { currentScene: { entities: [ { update: callback } ] } };
+    update(state);
+    ok(callback.calledWith(state));
+  });
+
+  test('components act on entities', function () {
+    var callback = sinon.spy();
+    var state = { currentScene: { entities: [ { components: [ { actOn: callback } ] } ] } };
+    update(state);
+    ok(callback.calledWith(state.currentScene.entities[0], state));
+  });
+
+  test('components update', function () {
+    var callback = sinon.spy();
+    var state = { currentScene: { entities: [ { components: [ { update: callback } ] } ] } };
+    update(state);
+    ok(callback.calledWith(state, state.currentScene.entities[0]));
+  });
+
   test('handle input current scene', function () {
     var callback = sinon.spy();
     var state = { currentScene: { handleInput: callback } };

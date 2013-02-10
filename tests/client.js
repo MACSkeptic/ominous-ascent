@@ -18,4 +18,5 @@ define(function (require) {
   require('./util/image_finder_test');
 
   require('./component/gun/pistol_test');
+  require('./component/movement_test');
 });

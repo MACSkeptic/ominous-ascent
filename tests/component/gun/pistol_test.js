@@ -25,6 +25,13 @@ define(function (require) {
     equal(instance.timeSinceLastShot, 10);
   });
 
+  test('time since last shot does not go over 999999', function () {
+    state.elapsed = 999998;
+    instance.update(state);
+    instance.update(state);
+    equal(instance.timeSinceLastShot, 999999);
+  });
+
   test('shoots', function () {
     var bulletInstance = 'instance of a bullet';
     bullet.returns(bulletInstance);

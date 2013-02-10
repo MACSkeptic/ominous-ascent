@@ -41,4 +41,19 @@ define(function (require) {
     equal(entity.x, 20);
     equal(entity.y, 40);
   });
+
+  test('max velocity', function () {
+    entity.velocityX = 0;
+    entity.velocityY = 0;
+    entity.maxVelocityX = 2;
+    entity.maxVelocityY = 1;
+    entity.accelerationX = 5;
+    entity.accelerationY = -10;
+    state.elapsed = 2000;
+    instance.actOn(entity, state);
+    equal(entity.velocityX, 2);
+    equal(entity.velocityY, -1);
+    equal(entity.x, 4);
+    equal(entity.y, -2);
+  });
 });

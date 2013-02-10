@@ -32,6 +32,13 @@ define(function (require) {
     equal(instance.timeSinceLastShot, 999999);
   });
 
+  test('zero time since last shot', function () {
+    state.elapsed = 999998;
+    instance.update(state);
+    instance.shoot(state);
+    equal(instance.timeSinceLastShot, 0);
+  });
+
   test('shoots', function () {
     var bulletInstance = 'instance of a bullet';
     bullet.returns(bulletInstance);
@@ -39,5 +46,6 @@ define(function (require) {
     instance.shoot(state);
 
     equal(entities[0], bulletInstance);
+    equal(bullet.lastCall.args[0], state);
   });
 });

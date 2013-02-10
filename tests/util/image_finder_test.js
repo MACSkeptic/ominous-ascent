@@ -6,7 +6,7 @@ define(function (require) {
   test('finds image', function () {
     var images = [
       { src: '/wrong/image.png' },
-      { src: '/rigth/image.png' },
+      { src: '/right/image.png' },
       { src: '/right/image.gif' }
     ];
 

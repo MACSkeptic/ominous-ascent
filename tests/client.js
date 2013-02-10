@@ -14,4 +14,8 @@ define(function (require) {
   require('./asset/image_loader_test');
 
   require('./entity/player_test');
+
+  require('./util/image_finder_test');
+
+  require('./component/gun/pistol_test');
 });

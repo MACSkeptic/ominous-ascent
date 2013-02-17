@@ -39,7 +39,7 @@ define(function (require) {
     splashScreen({});
     deepEqual(
       asset.imageLoader.lastCall.args[0].imagesToLoad,
-      ['/media/sprites/target.png', '/media/sprites/demon.png']
+      ['/media/sprites/fireball.gif', '/media/sprites/target.png', '/media/sprites/demon.png']
     );
   });
 

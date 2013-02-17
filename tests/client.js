@@ -16,6 +16,7 @@ define(function (require) {
   require('./entity/player_test');
 
   require('./util/image_finder_test');
+  require('./util/geometry_test');
 
   require('./component/gun/pistol_test');
   require('./component/movement_test');
